@@ -1,6 +1,6 @@
 {
   "name": "om-prexa-wedding",
-  "main": "dist/server/index.js",
+  "main": "src/entry-server.tsx",
   "compatibility_date": "2025-01-01",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
