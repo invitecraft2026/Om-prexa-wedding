@@ -29,7 +29,7 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Khushi & Dev — A Sacred Union" },
+      { title: "Om & prexa — A Sacred Union" },
       { name: "description", content: "A three-day wedding celebration. May 7–9, 2026." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
