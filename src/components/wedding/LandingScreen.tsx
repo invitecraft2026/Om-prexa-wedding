@@ -22,7 +22,6 @@ export function LandingScreen({ lang, onEnded }: LandingScreenProps) {
     const content = contentRef.current;
     if (!v || !overlay || !content) return;
 
-    // Fade out dark overlay and text content so video plays full and clean
     overlay.style.transition = "opacity 0.8s ease";
     overlay.style.opacity = "0";
     overlay.style.pointerEvents = "none";
@@ -31,13 +30,8 @@ export function LandingScreen({ lang, onEnded }: LandingScreenProps) {
     content.style.opacity = "0";
     content.style.pointerEvents = "none";
 
-    try {
-      v.muted = false;
-      await v.play();
-    } catch {
-      v.muted = true;
-      try { await v.play(); } catch { /* ignore */ }
-    }
+    // Always muted — no audio on the video
+    try { await v.play(); } catch { /* ignore */ }
   };
 
   return (
@@ -45,11 +39,12 @@ export function LandingScreen({ lang, onEnded }: LandingScreenProps) {
       <video
         ref={videoRef}
         playsInline
+        muted           // ← video is always muted
         preload="auto"
         onEnded={onEnded}
         className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src="/bride_and_groom.mp4" type="video/mp4" />
+        <source src="/newvideo.mp4" type="video/mp4" />
       </video>
 
       <div

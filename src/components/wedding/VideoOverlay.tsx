@@ -42,7 +42,7 @@ export function VideoOverlay({ lang, onEnded }: VideoOverlayProps) {
         onEnded={onEnded}
         className="h-full w-full object-cover"
       >
-        <source src="/bride_and_groom.mp4" type="video/mp4" />
+        <source src="/newvideo.mp4" type="video/mp4" />
       </video>
       <button
         onClick={onEnded}
