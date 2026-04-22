@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 
-const MUSIC_SRC =
-  "https://cdn.pixabay.com/audio/2022/10/30/audio_347ebc3382.mp3";
+const MUSIC_SRC = "sajana.mpeg";
 const STORAGE_KEY = "wedding-music-on";
 
 interface MusicToggleProps {
@@ -14,7 +13,6 @@ export function MusicToggle({ className = "" }: MusicToggleProps) {
   const [enabled, setEnabled] = useState(false);
   const [ready, setReady] = useState(false);
 
-  // Load preference
   useEffect(() => {
     if (typeof window === "undefined") return;
     const stored = window.localStorage.getItem(STORAGE_KEY);
@@ -22,16 +20,13 @@ export function MusicToggle({ className = "" }: MusicToggleProps) {
     setReady(true);
   }, []);
 
-  // Apply playback when enabled changes
   useEffect(() => {
     if (!ready) return;
     const a = audioRef.current;
     if (!a) return;
-    a.volume = 0.45;
+    a.volume = 0.2; // reduced from 0.45
     if (enabled) {
-      a.play().catch(() => {
-        // Autoplay blocked — will retry on next user interaction
-      });
+      a.play().catch(() => {});
     } else {
       a.pause();
     }

@@ -1,5 +1,6 @@
 import type { Lang } from "@/data/translations";
 import { translations } from "@/data/translations";
+import { MusicToggle } from "./MusicToggle";
 
 interface NavBarProps {
   lang: Lang;
@@ -20,24 +21,29 @@ export function NavBar({ lang, setLang }: NavBarProps) {
         <span className="font-ornament text-base tracking-[0.25em] text-gold-light sm:text-lg">
           {t.monogram}
         </span>
-        <div className="flex items-center gap-1 rounded-full border border-gold/30 p-1">
-          {(["en", "gu"] as Lang[]).map((l) => {
-            const active = lang === l;
-            return (
-              <button
-                key={l}
-                onClick={() => setLang(l)}
-                className={`rounded-full px-3 py-1 text-xs font-medium tracking-wider transition-all ${
-                  active
-                    ? "bg-gold/20 text-gold-light"
-                    : "text-muted-foreground hover:text-gold-light"
-                }`}
-                aria-pressed={active}
-              >
-                {l === "en" ? "EN" : "ગુ"}
-              </button>
-            );
-          })}
+
+        <div className="flex items-center gap-3">
+          <MusicToggle />
+
+          <div className="flex items-center gap-1 rounded-full border border-gold/30 p-1">
+            {(["en", "gu"] as Lang[]).map((l) => {
+              const active = lang === l;
+              return (
+                <button
+                  key={l}
+                  onClick={() => setLang(l)}
+                  className={`rounded-full px-3 py-1 text-xs font-medium tracking-wider transition-all ${
+                    active
+                      ? "bg-gold/20 text-gold-light"
+                      : "text-muted-foreground hover:text-gold-light"
+                  }`}
+                  aria-pressed={active}
+                >
+                  {l === "en" ? "EN" : "ગુ"}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
     </nav>
