@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Lang } from "@/data/translations";
 
 import { LandingScreen } from "@/components/wedding/LandingScreen";
@@ -29,58 +29,21 @@ export const Route = createFileRoute("/")({
         content:
           "Join us for the wedding celebrations of Om & Prexa — three sacred days of love, ritual and joy in Vadodara and Morbi, May 7–9, 2026.",
       },
-      {
-        property: "og:title",
-        content: "Om & Prexa — Mangal Milan",
-      },
-      {
-        property: "og:description",
-        content: "A three-day wedding celebration. May 7–9, 2026.",
-      },
-      {
-        property: "og:image",
-        content: g6,
-      },
-      {
-        name: "twitter:image",
-        content: g6,
-      },
+      { property: "og:title", content: "Om & Prexa — Mangal Milan" },
+      { property: "og:description", content: "A three-day wedding celebration. May 7–9, 2026." },
+      { property: "og:image", content: g6 },
+      { name: "twitter:image", content: g6 },
     ],
   }),
 });
 
 const galleryImages = [
-  {
-    src: g1,
-    alt: "Bride and groom in candlelight",
-    orientation: "portrait" as const,
-  },
-  {
-    src: g2,
-    alt: "Mandap with sacred fire",
-    orientation: "portrait" as const,
-  },
-  {
-    src: g3,
-    alt: "Henna hands with marigold",
-    orientation: "portrait" as const,
-  },
-  {
-    src: g4,
-    alt: "Bride and groom in candlelight",
-    orientation: "portrait" as const,
-  },
-  {
-    src: g5,
-    alt: "Bride and groom in candlelight",
-    orientation: "portrait" as const,
-  },
-  {
-    src: g6,
-    alt: "Bride and groom in candlelight",
-    orientation: "portrait" as const,
-  },
-  
+  // { src: g1, alt: "Bride and groom in candlelight", orientation: "portrait" as const },
+  // { src: g2, alt: "Mandap with sacred fire", orientation: "portrait" as const },
+  // { src: g3, alt: "Henna hands with marigold", orientation: "portrait" as const },
+  { src: g4, alt: "Bride and groom portrait", orientation: "portrait" as const },
+  { src: g5, alt: "Wedding couple portrait", orientation: "portrait" as const },
+  { src: g6, alt: "Bride and groom special moment", orientation: "portrait" as const },
 ];
 
 type Phase = "landing" | "playing" | "open";
@@ -89,61 +52,50 @@ function Index() {
   const [phase, setPhase] = useState<Phase>("landing");
   const [bloom, setBloom] = useState(false);
   const [lang, setLang] = useState<Lang>("en");
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  /* Load saved language */
   useEffect(() => {
     if (typeof window === "undefined") return;
-
     const stored = window.localStorage.getItem("wedding-lang");
-
-    if (stored === "en" || stored === "gu") {
-      setLang(stored as Lang);
-    }
+    if (stored === "en" || stored === "gu") setLang(stored as Lang);
   }, []);
 
+  /* Save selected language */
   useEffect(() => {
     if (typeof window === "undefined") return;
-
     window.localStorage.setItem("wedding-lang", lang);
   }, [lang]);
 
-  /* User taps landing button */
+  /* User taps landing button — start music immediately on gesture */
   const handleTap = () => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.2;
+      audioRef.current.play().catch(() => {});
+    }
     setPhase("playing");
   };
 
-  /* Video ends → instantly remove video + show bloom */
+  /* Video ends → show bloom + open invitation */
   const handleVideoEnded = () => {
-    /* remove video immediately */
     setPhase("open");
-
-    /* show bloom immediately */
     setBloom(true);
-
-    /* remove bloom after animation */
-    window.setTimeout(() => {
-      setBloom(false);
-    }, 1200);
+    window.setTimeout(() => setBloom(false), 1200);
   };
 
   return (
     <>
-      {/* Landing Screen */}
+      {/* Single audio element, always mounted */}
+      <audio ref={audioRef} src="newsong.mpeg" loop preload="auto" style={{ display: "none" }} />
+
       {phase === "landing" && (
-        <LandingScreen
-          lang={lang}
-          onTap={handleTap}
-        />
+        <LandingScreen lang={lang} onTap={handleTap} />
       )}
 
-      {/* Fullscreen Intro Video */}
       {phase === "playing" && (
-        <VideoOverlay
-          lang={lang}
-          onEnded={handleVideoEnded}
-        />
+        <VideoOverlay lang={lang} onEnded={handleVideoEnded} />
       )}
 
-      {/* Gold Bloom Transition */}
       {bloom && (
         <div
           className="pointer-events-none fixed inset-0 z-[999] flex items-center justify-center"
@@ -154,35 +106,23 @@ function Index() {
             style={{
               background:
                 "radial-gradient(circle, oklch(0.85 0.1 85 / 0.95), oklch(0.72 0.13 75 / 0.7) 40%, transparent 70%)",
-              animation:
-                "bloom 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+              animation: "bloom 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards",
             }}
           />
         </div>
       )}
 
-      {/* Main Invitation */}
       {phase === "open" && (
         <div
           className="bg-deep text-foreground"
-          style={{
-            animation:
-              "fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1)",
-          }}
+          style={{ animation: "fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1)" }}
         >
-          <NavBar
-            lang={lang}
-            setLang={setLang}
-          />
-
+          <NavBar lang={lang} setLang={setLang} audioRef={audioRef} />
           <main>
             <HeroSection lang={lang} />
             <ScratchCard lang={lang} />
             <Schedule lang={lang} />
-            <Gallery
-              lang={lang}
-              images={galleryImages}
-            />
+            <Gallery lang={lang} images={galleryImages} />
             <Venues lang={lang} />
             <Footer lang={lang} />
           </main>

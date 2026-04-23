@@ -73,7 +73,7 @@ export const schedule: Record<
 > = {
   day1: [
     { time: "09:00 AM", en: "Ganesh Sthapana", gu: "ગણેશ સ્થાપના", locEn: "Family Residence", locGu: "નિવાસસ્થાન" },
-    { time: "09:30 AM", en: "Mata ni Puja", gu: "મારવા અથવા બોલી", locEn: "Family Residence", locGu: "નિવાસસ્થાન" },
+    { time: "09:30 AM", en: "Mata ni Puja", gu: "માતાજી ની પૂજા ", locEn: "Family Residence", locGu: "નિવાસસ્થાન" },
     { time: "10:00 AM", en: "Mandap Muhurt", gu: "મંડપ મુહૂર્ત", locEn: "Family Residence", locGu: "નિવાસસ્થાન" },
     { time: "12:00 PM", en: "Lunch", gu: "ભોજન", locEn: "Janorvadi", locGu: "જનોરવાડી" },
     { time: "05:00 PM", en: "Haldi Ceremony", gu: "હલદી વિધિ", locEn: "Milan party plot", locGu: "મિલન પાર્ટી પ્લોટ" },
@@ -89,7 +89,7 @@ export const schedule: Record<
   ],
   day3: [
     {
-      time: "Shubh Lagna",
+      time: "12:30 AM",
       en: "Wedding Ceremony",
       gu: "લગ્ન વિધિ",
       locEn: "Radhe Marriage Hall, Canal Road, Morbi",

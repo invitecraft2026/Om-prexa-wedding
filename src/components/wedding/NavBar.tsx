@@ -5,9 +5,11 @@ import { MusicToggle } from "./MusicToggle";
 interface NavBarProps {
   lang: Lang;
   setLang: (l: Lang) => void;
+  audioRef: React.RefObject<HTMLAudioElement | null>;
 }
 
-export function NavBar({ lang, setLang }: NavBarProps) {
+
+export function NavBar({ lang, setLang,audioRef }: NavBarProps) {
   const t = translations[lang];
 
   return (
@@ -26,7 +28,7 @@ export function NavBar({ lang, setLang }: NavBarProps) {
         </span>
 
         <div className="flex items-center gap-3">
-          <MusicToggle />
+          <MusicToggle audioRef={audioRef} />
 
           <div className="flex items-center gap-1 rounded-full border border-gold/30 bg-white/5 p-1">
             {(["en", "gu"] as Lang[]).map((l) => {
