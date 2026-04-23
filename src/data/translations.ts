@@ -8,7 +8,7 @@ export const translations = {
     tapButton: "✦ TAP TO OPEN ✦",
     skip: "Skip →",
     monogram: "O & P",
-    brideGroom: "Prexa & Om",
+    brideGroom: "Om & Prexa",
     heroSubtitle: "Two souls, one destiny — bound by love, blessed by the divine.",
     countdownLabel: ["Days", "Hours", "Minutes", "Seconds"],
     scratchHint: "Scratch to reveal the sacred date ✨",
@@ -39,7 +39,7 @@ export const translations = {
     tapButton: "✦ ખોલવા માટે સ્પર્શ કરો ✦",
     skip: "છોડો →",
     monogram: "ખ ને દે",
-    brideGroom: "ખુશી ને દેવ",
+    brideGroom: "ઓમ અને પ્રેક્સા",
     heroSubtitle: "બે આત્મા, એક ભાગ્ય — પ્રેમ અને ઈશ્વરના આશીર્વાદથી બંધાયેલ.",
     countdownLabel: ["દિવસ", "કલાક", "મિનિટ", "સેકન્ડ"],
     scratchHint: "પવિત્ર તારીખ જાણવા માટે ઘસો ✨",
@@ -73,7 +73,7 @@ export const schedule: Record<
 > = {
   day1: [
     { time: "09:00 AM", en: "Ganesh Sthapana", gu: "ગણેશ સ્થાપના", locEn: "Family Residence", locGu: "નિવાસસ્થાન" },
-    { time: "09:30 AM", en: "Mata ni Puja", gu: "માતાજી ની પૂજા ", locEn: "Family Residence", locGu: "નિવાસસ્થાન" },
+    { time: "09:30 AM", en: "Mataji ni Puja", gu: "માતાજી ની પૂજા ", locEn: "Family Residence", locGu: "નિવાસસ્થાન" },
     { time: "10:00 AM", en: "Mandap Muhurt", gu: "મંડપ મુહૂર્ત", locEn: "Family Residence", locGu: "નિવાસસ્થાન" },
     { time: "12:00 PM", en: "Lunch", gu: "ભોજન", locEn: "Janorvadi", locGu: "જનોરવાડી" },
     { time: "05:00 PM", en: "Haldi Ceremony", gu: "હલદી વિધિ", locEn: "Milan party plot", locGu: "મિલન પાર્ટી પ્લોટ" },
@@ -89,7 +89,7 @@ export const schedule: Record<
   ],
   day3: [
     {
-      time: "12:30 AM",
+      time: "12:30 PM",
       en: "Wedding Ceremony",
       gu: "લગ્ન વિધિ",
       locEn: "Radhe Marriage Hall, Canal Road, Morbi",
