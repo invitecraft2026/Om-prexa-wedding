@@ -73,11 +73,11 @@ export const schedule: Record<
 > = {
   day1: [
     { time: "09:00 AM", en: "Ganesh Sthapana", gu: "ગણેશ સ્થાપના", locEn: "Family Residence", locGu: "નિવાસસ્થાન" },
-    { time: "09:30 AM", en: "Sandal Mata ni Puja", gu: "સાંદલ માતાની પૂજા", locEn: "Family Residence", locGu: "નિવાસસ્થાન" },
+    { time: "09:30 AM", en: "Mata ni Puja", gu: "મારવા અથવા બોલી", locEn: "Family Residence", locGu: "નિવાસસ્થાન" },
     { time: "10:00 AM", en: "Mandap Muhurt", gu: "મંડપ મુહૂર્ત", locEn: "Family Residence", locGu: "નિવાસસ્થાન" },
     { time: "12:00 PM", en: "Lunch", gu: "ભોજન", locEn: "Janorvadi", locGu: "જનોરવાડી" },
-    { time: "05:00 PM", en: "Haldi Ceremony", gu: "હળદી વિધિ", locEn: "Family Residence", locGu: "નિવાસસ્થાન" },
-    { time: "06:30 PM", en: "Mameru", gu: "મામેરુ", locEn: "Family Residence", locGu: "નિવાસસ્થાન" },
+    { time: "05:00 PM", en: "Haldi Ceremony", gu: "હલદી વિધિ", locEn: "Milan party plot", locGu: "મિલન પાર્ટી પ્લોટ" },
+    { time: "06:30 PM", en: "Mameru", gu: "મામેરુ", locEn: "Milan party plot", locGu: "મિલન પાર્ટી પ્લોટ" },
     { time: "07:00 PM", en: "Dinner", gu: "રાત્રિભોજન", locEn: "Milan Party Plot", locGu: "મિલન પાર્ટી પ્લોટ" },
     { time: "09:30 PM", en: "Raas Garba", gu: "રાસ ગરબા", locEn: "Milan Party Plot", locGu: "મિલન પાર્ટી પ્લોટ" },
   ],
@@ -117,6 +117,16 @@ export const venues = [
     eventsEn: "Lunch & Dinner — Days 1 & 2",
     eventsGu: "ભોજન અને રાત્રિભોજન — દિવસ ૧ અને ૨",
     mapsQuery: "Janorvadi, Vadodara",
+    featured: false,
+  },
+  {
+    nameEn: "Family Residence",
+    nameGu: "કુટુંબ નિવાસ",
+    addressEn: "C-236, Nathiba Nagar-2, Revadiya Duplex, Harni Road, Vadodara - 390022",
+    addressGu: "સી-૨૩૬, નાથિબા નગર-૨, રેવાડિયા ડુપ્લેક્સ, હર્ણી રોડ, વડોદરા - ૩૯૦૦૨૨",
+    eventsEn: "Family Residence & Guest Welcome",
+    eventsGu: "કુટુંબ નિવાસ અને મહેમાન સ્વાગત",
+    mapsQuery: "C-236 Nathiba Nagar-2 Revadiya Duplex Harni Road Vadodara 390022",
     featured: false,
   },
   {

@@ -9,12 +9,15 @@ interface NavBarProps {
 
 export function NavBar({ lang, setLang }: NavBarProps) {
   const t = translations[lang];
+
   return (
     <nav
       className="fixed inset-x-0 top-0 z-40 border-b backdrop-blur-xl"
       style={{
-        background: "oklch(0.18 0.025 40 / 0.85)",
-        borderColor: "oklch(0.72 0.13 75 / 0.3)",
+        /* lighter warm brown premium navbar */
+        background: "oklch(0.32 0.025 40 / 0.88)",
+        borderColor: "oklch(0.72 0.13 75 / 0.35)",
+        boxShadow: "0 4px 30px oklch(0.18 0.02 40 / 0.15)",
       }}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
@@ -25,9 +28,10 @@ export function NavBar({ lang, setLang }: NavBarProps) {
         <div className="flex items-center gap-3">
           <MusicToggle />
 
-          <div className="flex items-center gap-1 rounded-full border border-gold/30 p-1">
+          <div className="flex items-center gap-1 rounded-full border border-gold/30 bg-white/5 p-1">
             {(["en", "gu"] as Lang[]).map((l) => {
               const active = lang === l;
+
               return (
                 <button
                   key={l}

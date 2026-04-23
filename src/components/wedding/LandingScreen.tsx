@@ -3,49 +3,58 @@ import type { Lang } from "@/data/translations";
 import { translations } from "@/data/translations";
 import { FloatingPetals } from "./FloatingPetals";
 import { OrnamentDivider } from "./Ornaments";
+import { useVideoSrc } from "@/hooks/useVideoSrc";
 
 interface LandingScreenProps {
   lang: Lang;
-  onEnded: () => void;
+  onTap: () => void;
 }
 
-export function LandingScreen({ lang, onEnded }: LandingScreenProps) {
+export function LandingScreen({ lang, onTap }: LandingScreenProps) {
   const t = translations[lang];
   const fontClass = lang === "gu" ? "font-gujarati" : "font-display";
   const videoRef = useRef<HTMLVideoElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const handleTap = async () => {
+  // null until client is fully mounted — avoids SSR mismatch
+  const bgSrc = useVideoSrc();
+
+  const handleLoadedMetadata = () => {
     const v = videoRef.current;
+    if (!v) return;
+    v.currentTime = 0.1; // seek past frame 0 for a clean thumbnail
+  };
+
+  const handleTap = () => {
     const overlay = overlayRef.current;
     const content = contentRef.current;
-    if (!v || !overlay || !content) return;
-
-    overlay.style.transition = "opacity 0.8s ease";
-    overlay.style.opacity = "0";
-    overlay.style.pointerEvents = "none";
-
-    content.style.transition = "opacity 0.8s ease";
-    content.style.opacity = "0";
-    content.style.pointerEvents = "none";
-
-    // Always muted — no audio on the video
-    try { await v.play(); } catch { /* ignore */ }
+    if (overlay) {
+      overlay.style.transition = "opacity 0.5s ease";
+      overlay.style.opacity = "0";
+    }
+    if (content) {
+      content.style.transition = "opacity 0.5s ease";
+      content.style.opacity = "0";
+    }
+    window.setTimeout(onTap, 400);
   };
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-deep">
-      <video
-        ref={videoRef}
-        playsInline
-        muted           // ← video is always muted
-        preload="auto"
-        onEnded={onEnded}
-        className="absolute inset-0 h-full w-full object-cover"
-      >
-        <source src="/newvideo.mp4" type="video/mp4" />
-      </video>
+      {/* Only render video once src is known — prevents wrong video flash */}
+      {bgSrc && (
+        <video
+          key={bgSrc}
+          ref={videoRef}
+          src={bgSrc}
+          playsInline
+          muted
+          preload="auto"
+          onLoadedMetadata={handleLoadedMetadata}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      )}
 
       <div
         ref={overlayRef}

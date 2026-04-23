@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 
-const MUSIC_SRC = "sajana.mpeg";
-const STORAGE_KEY = "wedding-music-on";
+const MUSIC_SRC = "newsong.mpeg";
 
 interface MusicToggleProps {
   className?: string;
@@ -10,34 +9,39 @@ interface MusicToggleProps {
 
 export function MusicToggle({ className = "" }: MusicToggleProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [enabled, setEnabled] = useState(false);
-  const [ready, setReady] = useState(false);
+
+  /* always start as ON when page loads */
+  const [enabled, setEnabled] = useState(true);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    setEnabled(stored === "true");
-    setReady(true);
-  }, []);
+    const audio = audioRef.current;
+    if (!audio) return;
 
-  useEffect(() => {
-    if (!ready) return;
-    const a = audioRef.current;
-    if (!a) return;
-    a.volume = 0.2; // reduced from 0.45
+    audio.volume = 0.2;
+    audio.loop = true;
+
     if (enabled) {
-      a.play().catch(() => {});
+      audio.play().catch(() => {
+        /* browser autoplay may block until user interaction */
+      });
     } else {
-      a.pause();
+      audio.pause();
     }
-    window.localStorage.setItem(STORAGE_KEY, enabled ? "true" : "false");
-  }, [enabled, ready]);
+  }, [enabled]);
 
-  const toggle = () => setEnabled((v) => !v);
+  const toggle = () => {
+    setEnabled((prev) => !prev);
+  };
 
   return (
     <>
-      <audio ref={audioRef} src={MUSIC_SRC} loop preload="auto" />
+      <audio
+        ref={audioRef}
+        src={MUSIC_SRC}
+        preload="auto"
+        loop
+      />
+
       <button
         type="button"
         onClick={toggle}
@@ -50,6 +54,7 @@ export function MusicToggle({ className = "" }: MusicToggleProps) {
         ) : (
           <VolumeX className="h-3.5 w-3.5 opacity-80" />
         )}
+
         <span>{enabled ? "MUSIC ON" : "MUSIC OFF"}</span>
       </button>
     </>

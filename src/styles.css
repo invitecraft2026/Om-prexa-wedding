@@ -58,37 +58,45 @@
 :root {
   --radius: 0.375rem;
 
-  /* Wedding tokens (oklch approximations of hex palette) */
-  --deep: oklch(0.18 0.025 40);
-  --richbrown: oklch(0.28 0.06 45);
+  /* Wedding tokens (same palette, lighter soft brown background) */
+  --deep: oklch(0.30 0.022 40);       /* lighter brown background */
+  --richbrown: oklch(0.38 0.05 45);   /* softer rich brown */
   --gold: oklch(0.72 0.13 75);
-  --gold-light: oklch(0.85 0.1 85);
-  --gold-dark: oklch(0.5 0.1 65);
-  --rose: oklch(0.7 0.09 30);
-  --blush: oklch(0.84 0.07 40);
-  --cream: oklch(0.97 0.02 80);
-  --marigold: oklch(0.74 0.17 60);
-  --text-light: oklch(0.98 0.012 80);
+  --gold-light: oklch(0.85 0.10 85);
+  --gold-dark: oklch(0.56 0.10 65);
+  --rose: oklch(0.72 0.08 30);
+  --blush: oklch(0.84 0.06 40);
+  --cream: oklch(0.96 0.02 80);
+  --marigold: oklch(0.75 0.16 60);
+  --text-light: oklch(0.97 0.012 80);
 
   /* shadcn semantic tokens mapped onto wedding palette */
   --background: var(--deep);
   --foreground: var(--text-light);
-  --card: oklch(0.22 0.03 45);
+
+  --card: oklch(0.34 0.025 45);       /* lighter than before */
   --card-foreground: var(--text-light);
-  --popover: oklch(0.22 0.03 45);
+
+  --popover: oklch(0.34 0.025 45);
   --popover-foreground: var(--text-light);
+
   --primary: var(--gold);
   --primary-foreground: var(--deep);
+
   --secondary: var(--richbrown);
   --secondary-foreground: var(--gold-light);
-  --muted: oklch(0.25 0.03 45);
-  --muted-foreground: oklch(0.75 0.04 70);
+
+  --muted: oklch(0.32 0.025 45);
+  --muted-foreground: oklch(0.78 0.04 70);
+
   --accent: var(--marigold);
   --accent-foreground: var(--deep);
-  --destructive: oklch(0.55 0.2 25);
+
+  --destructive: oklch(0.58 0.20 25);
   --destructive-foreground: var(--text-light);
-  --border: oklch(0.72 0.13 75 / 0.25);
-  --input: oklch(0.72 0.13 75 / 0.3);
+
+  --border: oklch(0.72 0.13 75 / 0.30);
+  --input: oklch(0.72 0.13 75 / 0.35);
   --ring: var(--gold);
 }
 

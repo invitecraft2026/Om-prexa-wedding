@@ -63,7 +63,7 @@ export function HeroSection({ lang }: HeroProps) {
           className={`text-gold-gradient mb-8 font-light leading-[1.05] tracking-wide ${fontClass}`}
           style={{ fontSize: "clamp(3rem, 9vw, 7rem)" }}
         >
-          {lang === "gu" ? "પ્રેક્ષા & ઓમ" : "Prexa & Om"}
+          {lang === "gu" ? "પ્રેક્ષા & ઓમ" : "Om & Prexa"}
         </h1>
 
         <p
