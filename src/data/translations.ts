@@ -108,6 +108,8 @@ export const venues = [
     eventsGu: "રાત્રિભોજન અને રાસ ગરબા — દિવસ ૧",
     mapsQuery: "Milan Party Plot, New VIP Road, Vadodara",
     featured: false,
+    mapsLink:
+      "https://www.google.com/maps/search/?api=1&query=Milan+Party+Plot+New+VIP+Road+Vadodara",
   },
   {
     nameEn: "Janorvadi",
@@ -118,16 +120,23 @@ export const venues = [
     eventsGu: "ભોજન અને રાત્રિભોજન — દિવસ ૧ અને ૨",
     mapsQuery: "Janorvadi, Vadodara",
     featured: false,
+    mapsLink:
+      "https://maps.app.goo.gl/MLCSTcNRXv9vCZ5r7",
   },
   {
     nameEn: "Family Residence",
     nameGu: "કુટુંબ નિવાસ",
-    addressEn: "C-236, Nathiba Nagar-2, Revadiya Duplex, Harni Road, Vadodara - 390022",
-    addressGu: "સી-૨૩૬, નાથિબા નગર-૨, રેવાડિયા ડુપ્લેક્સ, હર્ણી રોડ, વડોદરા - ૩૯૦૦૨૨",
+    addressEn:
+      "C-236, Nathiba Nagar-2, Revadiya Duplex, Harni Road, Vadodara - 390022",
+    addressGu:
+      "સી-૨૩૬, નાથિબા નગર-૨, રેવાડિયા ડુપ્લેક્સ, હર્ણી રોડ, વડોદરા - ૩૯૦૦૨૨",
     eventsEn: "Family Residence & Guest Welcome",
     eventsGu: "કુટુંબ નિવાસ અને મહેમાન સ્વાગત",
-    mapsQuery: "C-236 Nathiba Nagar-2 Revadiya Duplex Harni Road Vadodara 390022",
+    mapsQuery:
+      "C-236 Nathiba Nagar-2 Revadiya Duplex Harni Road Vadodara 390022",
     featured: false,
+    mapsLink:
+      "https://maps.app.goo.gl/7QYBAyYhoPKdjV3CA",
   },
   {
     nameEn: "Radhe Marriage Hall",
@@ -138,5 +147,7 @@ export const venues = [
     eventsGu: "લગ્ન વિધિ — મુખ્ય પ્રસંગ",
     mapsQuery: "Radhe Marriage Hall, Canal Road, Morbi",
     featured: true,
+    mapsLink:
+      "https://www.google.com/maps/search/?api=1&query=Radhe+Marriage+Hall+Canal+Road+Morbi",
   },
 ];

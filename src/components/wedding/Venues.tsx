@@ -15,7 +15,10 @@ export function Venues({ lang }: VenuesProps) {
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 text-center">
           <OrnamentDivider className="mb-6" />
-          <h2 className={`text-gold-gradient mb-3 text-4xl font-light sm:text-6xl ${fontClass}`}>
+
+          <h2
+            className={`text-gold-gradient mb-3 text-4xl font-light sm:text-6xl ${fontClass}`}
+          >
             {t.venuesTitle}
           </h2>
         </div>
@@ -23,6 +26,7 @@ export function Venues({ lang }: VenuesProps) {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {venues.map((v) => {
             const featured = v.featured;
+
             return (
               <article
                 key={v.nameEn}
@@ -47,9 +51,13 @@ export function Venues({ lang }: VenuesProps) {
                     ✦ {t.mainVenueBadge} ✦
                   </span>
                 )}
-                <h3 className={`mb-2 text-2xl text-gold-light sm:text-3xl ${fontClass}`}>
+
+                <h3
+                  className={`mb-2 text-2xl text-gold-light sm:text-3xl ${fontClass}`}
+                >
                   {lang === "gu" ? v.nameGu : v.nameEn}
                 </h3>
+
                 <p
                   className={`mb-3 text-sm text-blush ${
                     lang === "gu" ? "font-gujarati" : ""
@@ -57,6 +65,7 @@ export function Venues({ lang }: VenuesProps) {
                 >
                   📍 {lang === "gu" ? v.addressGu : v.addressEn}
                 </p>
+
                 <p
                   className={`mb-6 flex-1 text-xs italic text-muted-foreground sm:text-sm ${
                     lang === "gu" ? "font-gujarati" : ""
@@ -68,16 +77,20 @@ export function Venues({ lang }: VenuesProps) {
                 <div className="mb-4 aspect-video overflow-hidden rounded-sm border border-gold/20">
                   <iframe
                     title={v.nameEn}
-                    src={`https://www.google.com/maps?q=${encodeURIComponent(v.mapsQuery)}&output=embed`}
+                    src={`https://www.google.com/maps?q=${encodeURIComponent(
+                      v.mapsQuery
+                    )}&output=embed`}
                     className="h-full w-full"
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    style={{ filter: "grayscale(0.4) sepia(0.15)" }}
+                    style={{
+                      filter: "grayscale(0.4) sepia(0.15)",
+                    }}
                   />
                 </div>
 
                 <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(v.mapsQuery)}`}
+                  href={v.mapsLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`inline-flex items-center justify-center rounded-sm border border-gold/50 bg-gold/10 px-4 py-2 font-ornament text-[10px] tracking-[0.25em] text-gold-light transition hover:border-gold hover:bg-gold/20 sm:text-xs ${fontClass}`}

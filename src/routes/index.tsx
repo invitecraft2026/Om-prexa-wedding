@@ -31,8 +31,8 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:title", content: "Om & Prexa — Mangal Milan" },
       { property: "og:description", content: "A three-day wedding celebration. May 7–9, 2026." },
-      { property: "og:image", content: g6 },
-      { name: "twitter:image", content: g6 },
+      { property: "og:image", content: g5 },
+      { name: "twitter:image", content: g5 },
     ],
   }),
 });
