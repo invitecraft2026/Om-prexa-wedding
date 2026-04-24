@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "om-prexa-wedding",
+  "name": "om-prexa-wedding-invitation",
   "main": "@tanstack/react-start/server-entry",
   "compatibility_date": "2025-01-01",
   "compatibility_flags": ["nodejs_compat"]
